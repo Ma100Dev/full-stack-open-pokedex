@@ -48,7 +48,7 @@ jobs:
           DISCORD_AVATAR: https://cdn-icons-png.flaticon.com/512/1828/1828843.png
         uses: Ilshidur/action-discord@08d9328877d6954120eef2b07abbc79249bb6210
         with:
-          args: 'This commit is broken: https://github.com/Ma100Dev/full-stack-open-pokedex/commit/$(git rev-parse --short "$GITHUB_SHA" )'
+          args: "This commit is broken: https://github.com/Ma100Dev/full-stack-open-pokedex/commit/{{GITHUB_SHA::8}}"
   tag_release:
     runs-on: ubuntu-20.04
     needs: simple_deployment_pipeline
