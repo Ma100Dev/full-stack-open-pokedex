@@ -46,9 +46,19 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_AVATAR: https://cdn-icons-png.flaticon.com/512/1828/1828843.png
+          DISCORD_USERNAME: "GitHub"
+          DISCORD_EMBEDS: |
+            ${{toJson(
+              [
+                {
+                  "description": "commit https://github.com/Ma100Dev/full-stack-open-pokedex/commit/{{GITHUB_SHA}} broke the build",
+                  "color": "15158332"
+                }
+              ]
+            )}}
         uses: Ilshidur/action-discord@08d9328877d6954120eef2b07abbc79249bb6210
         with:
-          args: "This commit is broken: https://github.com/Ma100Dev/full-stack-open-pokedex/commit/{{GITHUB_SHA}}"
+          args: "Build failed"
   tag_release:
     runs-on: ubuntu-20.04
     needs: simple_deployment_pipeline
