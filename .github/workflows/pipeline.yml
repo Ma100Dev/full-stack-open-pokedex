@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - uses: benjlevesque/short-sha@344959a3df3bee46c997a6fff995e90edd76d96a
         with:
           length: 7
       - uses: actions/setup-node@v2
@@ -44,6 +43,12 @@ jobs:
           delay: 5
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
+      - name: Declare variables for Discord
+        id: vars
+        shell: bash
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
       - name: alert on failure
         if: ${{ failure() }}
         env:
@@ -53,7 +58,7 @@ jobs:
           DISCORD_EMBEDS: |
             [
               {
-                "description": "commit https://github.com/Ma100Dev/full-stack-open-pokedex/commit/${{ steps.short-sha.outputs.sha }} broke the build",
+                "description": "commit https://github.com/Ma100Dev/full-stack-open-pokedex/commit/${{ steps.vars.outputs.sha_short }} broke the build",
                 "color": "15158332"
               }
             ]
