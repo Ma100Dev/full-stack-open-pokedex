@@ -13,7 +13,9 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - uses: benjlevesque/short-sha@v1.2
+      - uses: benjlevesque/short-sha@344959a3df3bee46c997a6fff995e90edd76d96a
+        with:
+          length: 7
       - uses: actions/setup-node@v2
         with:
           node-version: "16"
