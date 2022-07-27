@@ -50,7 +50,7 @@ jobs:
           DISCORD_EMBEDS: |
             [
               {
-                "description": "commit https://github.com/Ma100Dev/full-stack-open-pokedex/commit/{{GITHUB_SHA}} broke the build",
+                "description": "commit https://github.com/Ma100Dev/full-stack-open-pokedex/commit/${{GITHUB_SHA}} broke the build",
                 "color": "15158332"
               }
             ]
