@@ -58,7 +58,6 @@ jobs:
           severity: error
           details: Test error.
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          avatarUrl: https://cdn-icons-png.flaticon.com/512/1828/1828843.png
       - name: Test Cancelled
         uses: rjstone/discord-webhook-notify@v1
         if: cancelled()
