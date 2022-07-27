@@ -49,13 +49,12 @@ jobs:
           DISCORD_USERNAME: "GitHub"
           DISCORD_EMBEDS: |
             ${{toJson(
-              [
-                {
-                  "description": "commit https://github.com/Ma100Dev/full-stack-open-pokedex/commit/{{GITHUB_SHA}} broke the build",
-                  "color": "15158332"
-                }
-              ]
-            )}}
+              {
+                "description": "commit https://github.com/Ma100Dev/full-stack-open-pokedex/commit/{{GITHUB_SHA}} broke the build",
+                "color": "15158332"
+              }
+            )
+            }}
         uses: Ilshidur/action-discord@08d9328877d6954120eef2b07abbc79249bb6210
         with:
           args: "Build failed"
