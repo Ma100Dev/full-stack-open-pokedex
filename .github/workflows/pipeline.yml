@@ -52,11 +52,11 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           avatarUrl: https://cdn-icons.flaticon.com/png/512/4436/premium/4436481.png?token=exp=1658857713~hmac=199381e6efc2826ebd8d8b77c49146bd
       - name: Test Failure
-        uses: rjstone/discord-webhook-notify@v1
+        uses: rjstone/discord-webhook-notify@master
         if: failure()
         with:
           severity: error
-          details: Test Failed!
+          details: Test error.
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           avatarUrl: https://cdn-icons-png.flaticon.com/512/1828/1828843.png
       - name: Test Cancelled
